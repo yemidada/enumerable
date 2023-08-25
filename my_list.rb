@@ -1,25 +1,19 @@
+require_relative 'my_enumerable'
 
-module MyEnumerable
-
-    def checkAllLessFive
-      list.all? { |number| number < 5 }
-    end
-
-    def checkAllMoreFive
-        list.all? { |number| number > 5 }
-    end
-
-    def checkAnyEqualTwo
-        list.any? { |number| number == 2 }
-    end
-
-    def checkAnyEqualFive
-        list.any? { |number| number == 5 }
-    end
-
-    def filter
-        list.filter { |number| number.even? }
-    end
-
-  end
+class MyList
+    include MyEnumerable
+    attr_accessor :list
   
+    def initialize(*value)
+      @list = value
+    end
+end
+  
+myList = MyList.new(1, 2, 3, 4)
+puts myList.checkAllLessFive
+puts myList.checkAllMoreFive
+puts myList.checkAnyEqualTwo
+puts myList.checkAnyEqualFive
+puts myList.filter
+
+
