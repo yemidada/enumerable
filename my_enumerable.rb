@@ -1,25 +1,21 @@
-
 module MyEnumerable
-
-    def checkAllLessFive
-      list.all? { |number| number < 5 }
-    end
-
-    def checkAllMoreFive
-        list.all? { |number| number > 5 }
-    end
-
-    def checkAnyEqualTwo
-        list.any? { |number| number == 2 }
-    end
-
-    def checkAnyEqualFive
-        list.any? { |number| number == 5 }
-    end
-
-    def filter
-        list.filter { |number| number.even? }
-    end
-
+  def check_all_less_five
+    list.all? { |number| number < 5 }
   end
-  
+
+  def check_all_more_five
+    list.all? { |number| number > 5 }
+  end
+
+  def check_any_equal_two
+    list.any? { |number| number == 2 }
+  end
+
+  def check_any_equal_five
+    list.any? { |number| number == 5 }
+  end
+
+  def check_filter
+    list.filter(&:even?)
+  end
+end
