@@ -1,21 +1,19 @@
 module MyEnumerable
-  def check_all_less_five
-    list.all? { |number| number < 5 }
+  def all?(&block)
+    result = true
+    each { |item| result = false unless block.call(item) }
+    result
   end
 
-  def check_all_more_five
-    list.all? { |number| number > 5 }
+  def any?(&block)
+    result = false
+    each { |item| result = true if block.call(item) }
+    result
   end
 
-  def check_any_equal_two
-    list.any? { |number| number == 2 }
-  end
-
-  def check_any_equal_five
-    list.any? { |number| number == 5 }
-  end
-
-  def check_filter
-    list.filter(&:even?)
+  def filter(&block)
+    result = []
+    each { |item| result << item if block.call(item) }
+    result
   end
 end

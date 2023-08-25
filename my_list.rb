@@ -2,16 +2,24 @@ require_relative 'my_enumerable'
 
 class MyList
   include MyEnumerable
-  attr_accessor :list
 
-  def initialize(*value)
-    @list = value
+  def initialize(*list)
+    @list = list
+  end
+
+  def each(&block)
+    @list.each(&block)
   end
 end
 
-my_list = MyList.new(1, 2, 3, 4)
-puts my_list.check_all_less_five
-puts my_list.check_all_more_five
-puts my_list.check_any_equal_two
-puts my_list.check_any_equal_five
-puts my_list.check_filter
+list = MyList.new(1, 2, 3, 4)
+
+puts(list.all? { |e| e < 5 }) # => true
+
+puts(list.all? { |e| e > 5 }) # => false
+
+puts(list.any? { |e| e == 2 }) # => true
+
+puts(list.any? { |e| e == 5 }) # => false
+
+puts list.filter(&:even?) # => [2, 4]
